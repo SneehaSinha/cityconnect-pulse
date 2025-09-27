@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -12,13 +13,34 @@ import {
 } from 'lucide-react';
 import { mockIssues, mockUser, mockAnalytics } from '@/data/mockData';
 import { formatDistanceToNow } from 'date-fns';
+import { PendingIssuesSection } from '@/components/issues/PendingIssuesSection';
+import { Issue } from '@/types';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Dashboard() {
+  const { toast } = useToast();
+  const [issues, setIssues] = useState<Issue[]>(mockIssues);
+  
   // Filter issues by user's authority role
-  const authorityIssues = mockIssues.filter(issue => issue.category === mockUser.role);
+  const authorityIssues = issues.filter(issue => issue.category === mockUser.role);
   const pendingIssues = authorityIssues.filter(issue => issue.status === 'pending');
   const inProgressIssues = authorityIssues.filter(issue => issue.status === 'in-progress');
   const completedIssues = authorityIssues.filter(issue => issue.status === 'completed');
+
+  const handleStatusUpdate = (issueId: string, newStatus: Issue['status']) => {
+    setIssues(prevIssues => 
+      prevIssues.map(issue => 
+        issue.id === issueId 
+          ? { ...issue, status: newStatus, updatedAt: new Date() }
+          : issue
+      )
+    );
+    
+    toast({
+      title: "Status Updated",
+      description: `Issue ${issueId} status changed to ${newStatus.replace('-', ' ')}`,
+    });
+  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -207,6 +229,12 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {/* All Issues Section */}
+      <PendingIssuesSection
+        issues={authorityIssues}
+        onStatusUpdate={handleStatusUpdate}
+      />
 
       {/* Quick Actions */}
       <Card className="card-professional">
