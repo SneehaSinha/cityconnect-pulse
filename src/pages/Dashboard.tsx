@@ -71,62 +71,82 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-hover rounded-lg p-6 text-primary-foreground">
-        <h1 className="text-3xl font-bold mb-2">Welcome back, {mockUser.name}</h1>
-        <p className="text-primary-foreground/90">
-          {mockUser.department} • Managing {authorityIssues.length} total issues
-        </p>
+      <div className="card-hero p-8 animate-fade-in">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold mb-3 animate-slide-up">
+              Welcome back, {mockUser.name}
+            </h1>
+            <p className="text-primary-foreground/90 text-lg animate-slide-up" style={{animationDelay: '0.1s'}}>
+              {mockUser.department} • Managing {authorityIssues.length} total issues
+            </p>
+          </div>
+          <div className="hidden lg:block animate-float">
+            <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
+              <Users className="h-10 w-10 text-primary-foreground" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="card-professional">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Issues</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+        <Card className="card-elevated group hover-glow animate-scale-in">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Issues</CardTitle>
+            <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+              <AlertTriangle className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{authorityIssues.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-3xl font-bold mb-1">{authorityIssues.length}</div>
+            <p className="text-sm text-success flex items-center">
+              <span className="text-success mr-1">↗</span>
               +2 from last week
             </p>
           </CardContent>
         </Card>
 
-        <Card className="card-professional">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending</CardTitle>
-            <Clock className="h-4 w-4 text-warning" />
+        <Card className="card-elevated group hover-glow animate-scale-in" style={{animationDelay: '0.1s'}}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Pending</CardTitle>
+            <div className="p-2 bg-warning/10 rounded-lg group-hover:bg-warning/20 transition-colors">
+              <Clock className="h-5 w-5 text-warning" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{pendingIssues.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-3xl font-bold mb-1 text-warning">{pendingIssues.length}</div>
+            <p className="text-sm text-muted-foreground">
               Require attention
             </p>
           </CardContent>
         </Card>
 
-        <Card className="card-professional">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">In Progress</CardTitle>
-            <TrendingUp className="h-4 w-4 text-primary" />
+        <Card className="card-elevated group hover-glow animate-scale-in" style={{animationDelay: '0.2s'}}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">In Progress</CardTitle>
+            <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+              <TrendingUp className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{inProgressIssues.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-3xl font-bold mb-1 text-primary">{inProgressIssues.length}</div>
+            <p className="text-sm text-muted-foreground">
               Currently working
             </p>
           </CardContent>
         </Card>
 
-        <Card className="card-professional">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Completed</CardTitle>
-            <CheckCircle2 className="h-4 w-4 text-success" />
+        <Card className="card-elevated group hover-glow animate-scale-in" style={{animationDelay: '0.3s'}}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Completed</CardTitle>
+            <div className="p-2 bg-success/10 rounded-lg group-hover:bg-success/20 transition-colors">
+              <CheckCircle2 className="h-5 w-5 text-success" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{completedIssues.length}</div>
-            <p className="text-xs text-success text-xs">
+            <div className="text-3xl font-bold mb-1 text-success">{completedIssues.length}</div>
+            <p className="text-sm text-success">
               This month
             </p>
           </CardContent>
