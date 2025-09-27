@@ -60,14 +60,14 @@ export function IssueCard({ issue, onViewDetails, onStatusUpdate }: IssueCardPro
   };
 
   return (
-    <Card className="card-elevated group hover-lift animate-fade-in">
-      <CardContent className="p-5 space-y-4">
+    <Card className="card-professional hover:shadow-md transition-shadow">
+      <CardContent className="p-4 space-y-3">
         {/* Header with Title and Priority */}
         <div className="flex items-start justify-between">
-          <h3 className="font-semibold text-lg leading-tight pr-2 group-hover:text-primary transition-colors">{issue.title}</h3>
-          <div className={`px-2 py-1 rounded-md text-xs font-semibold ${getPriorityColor(issue.priority)} bg-current/10 whitespace-nowrap`}>
+          <h3 className="font-semibold text-base leading-tight pr-2">{issue.title}</h3>
+          <span className={`text-xs font-medium ${getPriorityColor(issue.priority)} whitespace-nowrap`}>
             {issue.priority.toUpperCase()}
-          </div>
+          </span>
         </div>
 
         {/* Status Badge */}

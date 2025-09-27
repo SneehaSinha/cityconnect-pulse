@@ -8,31 +8,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* CityConnect Premium Design System */
-    --background: 220 20% 97%;
-    --foreground: 217 15% 12%;
+    /* CityConnect Professional Design System */
+    --background: 0 0% 98%;
+    --foreground: 217 12% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 217 15% 12%;
+    --card-foreground: 217 12% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 217 15% 12%;
+    --popover-foreground: 217 12% 18%;
 
-    /* Enhanced Blue Palette with Depth */
+    /* Professional Blue Palette */
     --primary: 220 91% 58%; /* #2563eb */
     --primary-foreground: 0 0% 100%;
     --primary-hover: 220 87% 52%; /* #1e40af */
-    --primary-soft: 220 91% 95%;
-    --primary-muted: 220 50% 85%;
 
-    --secondary: 220 20% 95%;
-    --secondary-foreground: 217 15% 12%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 217 12% 18%;
 
-    --muted: 220 20% 95%;
-    --muted-foreground: 217 10% 46%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 217 7% 46%;
 
-    --accent: 210 40% 98%;
-    --accent-foreground: 217 15% 12%;
+    --accent: 220 91% 58%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -47,34 +45,33 @@ All colors MUST be HSL.
     --input: 220 13% 91%;
     --ring: 220 91% 58%;
 
-    --radius: 0.875rem;
+    --radius: 0.75rem;
 
-    /* Premium shadows and effects */
-    --shadow-card: 0 1px 3px 0 hsl(220 43% 11% / 0.05), 0 1px 2px 0 hsl(220 43% 11% / 0.03);
-    --shadow-elevated: 0 4px 12px -2px hsl(220 43% 11% / 0.08), 0 2px 8px -2px hsl(220 43% 11% / 0.04);
-    --shadow-floating: 0 10px 25px -5px hsl(220 43% 11% / 0.1), 0 10px 10px -5px hsl(220 43% 11% / 0.04);
-    --shadow-primary: 0 8px 25px -8px hsl(var(--primary) / 0.3);
-    
-    /* Enhanced gradients */
+    /* Professional shadows and gradients */
+    --shadow-card: 0 1px 3px 0 hsl(220 13% 91% / 0.1), 0 1px 2px 0 hsl(220 13% 91% / 0.06);
+    --shadow-elevated: 0 10px 15px -3px hsl(220 13% 91% / 0.1), 0 4px 6px -2px hsl(220 13% 91% / 0.05);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(220 20% 98%));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(220 87% 52%) 50%, hsl(220 83% 46%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 96%));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
 
-    /* Sophisticated animations */
+    /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    /* Sidebar refinements */
-    --sidebar-background: 220 25% 97%;
-    --sidebar-foreground: 217 15% 12%;
-    --sidebar-primary: 220 91% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 30% 94%;
-    --sidebar-accent-foreground: 217 15% 12%;
-    --sidebar-border: 220 15% 89%;
-    --sidebar-ring: 220 91% 58%;
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -127,69 +124,34 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Premium Card Components */
+  /* Professional Card Components */
   .card-professional {
-    @apply bg-[var(--gradient-card)] border border-border/50 rounded-[var(--radius)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-[var(--transition-smooth)] backdrop-blur-sm;
-  }
-
-  .card-elevated {
-    @apply bg-card border border-border/30 rounded-[var(--radius)] shadow-[var(--shadow-elevated)] hover:shadow-[var(--shadow-floating)] transition-[var(--transition-smooth)] backdrop-blur-sm;
+    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-all duration-300;
   }
 
   .card-gradient {
-    @apply bg-[var(--gradient-card)] border border-border/30 rounded-[var(--radius)] shadow-[var(--shadow-card)] overflow-hidden;
+    @apply bg-gradient-to-br from-card to-muted border border-border rounded-lg shadow-[var(--shadow-card)];
   }
 
-  .card-hero {
-    @apply bg-[var(--gradient-hero)] text-primary-foreground rounded-[var(--radius)] shadow-[var(--shadow-primary)] overflow-hidden;
-  }
-
-  /* Enhanced Status Badges */
+  /* Status Badges */
   .badge-pending {
-    @apply bg-warning/10 text-warning border border-warning/20 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-sm;
+    @apply bg-warning/10 text-warning border border-warning/20 rounded-full px-3 py-1 text-xs font-medium;
   }
 
   .badge-progress {
-    @apply bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-sm;
+    @apply bg-primary/10 text-primary border border-primary/20 rounded-full px-3 py-1 text-xs font-medium;
   }
 
   .badge-completed {
-    @apply bg-success/10 text-success border border-success/20 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-sm;
+    @apply bg-success/10 text-success border border-success/20 rounded-full px-3 py-1 text-xs font-medium;
   }
 
-  /* Interactive Elements with Premium Feel */
+  /* Interactive Elements */
   .hover-lift {
-    @apply transition-[var(--transition-spring)] hover:scale-[1.02] hover:shadow-[var(--shadow-floating)] hover:-translate-y-1;
-  }
-
-  .hover-glow {
-    @apply transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-primary)];
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-elevated)];
   }
 
   .interactive-card {
     @apply card-professional hover-lift cursor-pointer;
-  }
-
-  .glass-effect {
-    @apply bg-card/80 backdrop-blur-md border border-border/50;
-  }
-
-  /* Typography enhancements */
-  .text-gradient {
-    @apply bg-[var(--gradient-primary)] bg-clip-text text-transparent;
-  }
-
-  /* Button enhancements */
-  .btn-primary {
-    @apply bg-[var(--gradient-primary)] hover:shadow-[var(--shadow-primary)] transition-[var(--transition-smooth)];
-  }
-
-  /* Layout components */
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .grid-responsive {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
   }
 }
